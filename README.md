@@ -1,38 +1,51 @@
-# Tink skeleton Angular directive
+# A-Welzijn Verslag
 
-v1.0.4
+v1.0.5
 
-## What is this repository for?
+### Hoe het eruit ziet
 
-The Tink Angular skeleton provides a scaffold for a directive or service that can easily work with Tink.
+![Screenshot](http://i219.photobucket.com/albums/cc319/Gnomepy/Verslag1_zpsctmmwa6j.jpg)
 
-Tink is an in-house developed easy-to-use front end framework for quick prototyping and simple deployment of all kinds of websites and apps, keeping a uniform and consistent look and feel.
+### Hoe het te gebruiken
 
-## Setup
+```javascript
+"dependencies": {
+	"awelzijn-verslag": "latest"
+ }
+```
+```javascript
+var app = angular.module('yourApp', [
+	'awelzijn.verslag', 
+    'awelzijn.verslageditor',
+    'awelzijn.verslagservice'
+]);
+```
 
-### Prerequisites
+#### Verslag
 
-* nodeJS [http://nodejs.org/download/](http://nodejs.org/download/)
-* bower: `npm install -g bower`
+```html
+<a-welzijn-verslag type="type" parent-id="id"></a-welzijn-verslag>
+```
 
-### Install
+Deze directive spreekt de verslag-service aan die de [helper-http](https://github.com/A-welzijn/helper-http)-service gebruikt.
 
-1. Go to the root of your project and type the following command in your terminal:
-   `bower install tink-back-to-top-angular --save`
+#### Verslag-service
 
-2. Include `dist/tink-back-to-top-angular.js` and its necessary dependencies in your project.
+Deze service stuurt via de [helper-http](https://github.com/A-welzijn/helper-http)-service naar de api.
 
-3. On http://tink.digipolis.be you will find all necessary documentation.
-
-## Contribution guidelines
-
-* If you're not sure, drop us a note
-* Fork this repo
-* Do your thing
-* Create a pull request
-
-## Who do I talk to?
-
-* Jasper Van Proeyen - jasper.vanproeyen@digipolis.be - Lead front-end
-* Tom Wuyts - tom.wuyts@digipolis.be - Lead UX
-* [The hand](https://www.youtube.com/watch?v=_O-QqC9yM28)
+```csharp
+[HttpGet()]
+public IActionResult ListVersalgen([FromQuery]int parentId, [FromQuery]string type)
+```
+```csharp
+[HttpPost("type/{id:int}")]
+public IActionResult InsertForGesprek(int id, [FromBody]Verslag verslag)
+```
+```csharp
+[HttpPut("{id:int}")]
+public IActionResult Update(int id, [FromBody]Models.Edit.Verslag verslag)
+```
+```csharp
+[HttpDelete("{type}/{id:int}")]
+public IActionResult Delete(string type, int id)
+```
