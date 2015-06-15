@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="tink.skeleton">
+<html ng-app="awelzijn.verslag">
 <head>
   <meta charset="utf-8">
   <title>Tink module</title>
@@ -7,15 +7,23 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="initial-scale=1.0,user-scalable=no,minimum-scale=1.0">
   <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+  <link rel="stylesheet" href="bower_components/tink-core/dist/tink.css" />
   <!-- endbower -->
 </head>
 <body>
 
-<tink-skeleton data-text="Skeleton is working fine!"></tink-skeleton>
+Press F12
 
 <!-- bower:js -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/awelzijn-notification-service/dist/awelzijn-notification-service.js"></script>
+<script src="bower_components/awelzijn-base64-encoding/dist/awelzijn-base64-encoding.js"></script>
+<script src="bower_components/awelzijn-helper-http/dist/awelzijn-helper-http.js"></script>
 <!-- endbower -->
 
-<script src="scripts/directives/skeleton.js"></script>
+<script src="scripts/directives/awelzijn-verslag.js"></script>
+<script src="scripts/directives/awelzijn-verslag-editor.js"></script>
+<script src="scripts/directives/awelzijn-verslag-service.js"></script>
 </body>
 </html>
