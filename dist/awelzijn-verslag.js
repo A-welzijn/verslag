@@ -58,7 +58,7 @@
   } catch (e) {
     module = angular.module('awelzijn.verslagservice', []);
   }
-  module.directive('aWelzijnVerslagService', ["AppService", "awelzijnHelperHttp", "AppConfig", function (appService, helper, appConfig) {
+  module.factory('aWelzijnVerslagService', ["AppService", "awelzijnHelperHttp", "AppConfig", function (appService, helper, appConfig) {
     		var url = appConfig.apiRoot + "verslag/";
 
 		function _get(id) {
@@ -96,7 +96,6 @@
 			return helper.get(url, options);
 		}
 
-		appService.logger.creation(serviceName);
 		return {
 			get: _get,
 			getBySoort: _getBySoort,
