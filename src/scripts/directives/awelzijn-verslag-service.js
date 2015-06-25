@@ -40,7 +40,6 @@
 
 		return {
 			get: _get,
-			getBySoort: _getBySoort,
 			update: _update,
 			delete: _delete,
 			listByType: _listByType,
