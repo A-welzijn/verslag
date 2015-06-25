@@ -44,7 +44,7 @@
 			<span>
 				{{verslag.titel}} op {{verslag.datum | date:"dd MMMM yyyy"}}
 			</span>
-			<span style="color:gray; margin-left:5px; font-size: .9em;">door {{verslag.medewerker.voornaam + ' ' + verslag.medewerker.naam | naam}}</span>
+			<span style="color:gray; margin-left:5px; font-size: .9em;">door {{verslag.medewerker.voornaam + ' ' + verslag.medewerker.naam | capitalize}}</span>
 			<span ng-show="verslag.hover" class="float-right verslag-edit-controls">
 				<a><i class="fa fa-pencil" ng-click="editing = !editing; ctrl.editVerslag(verslag);"></i></a>
 				<a><i class="fa fa-trash-o" ng-click="ctrl.deleteVerslag(verslag);"></i></a>

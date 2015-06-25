@@ -5,7 +5,7 @@
   } catch (e) {
     module = angular.module('awelzijn.verslag', []);
   }
-  module.directive('aWelzijnVerslag', ["aWelzijnVerslagService" ,function (verslagService) {
+  module.directive('aWelzijnVerslag', ["aWelzijnVerslagService", function (verslagService) {
     return {
     		scope: {
         parentId: '=',
@@ -73,7 +73,6 @@
             ctrl.getVerslagen(ctrl.type, ctrl.parentId);
           }
         });
-
     		}
     };
   }]);

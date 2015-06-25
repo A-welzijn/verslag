@@ -12,10 +12,6 @@
 			return helper.get(url + id);
 		}
 
-		function _getBySoort(soort, id) {
-			return helper.get(url + soort + '/' + id);
-		}
-
 		function _update(id, verslag) {
 			return helper.put(url + id, verslag);
 		}
@@ -25,8 +21,7 @@
 		}
 
 		function _listByType(parentId, type) {
-			var options = { params: { parentId: parentId, type: type } };
-			return helper.get(url, options);
+			return helper.get(url + type + '/' + parentId);
 		}
 
 		function _insertForType(parentId, type, verslag) {

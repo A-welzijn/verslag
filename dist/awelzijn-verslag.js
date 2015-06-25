@@ -65,10 +65,6 @@
 			return helper.get(url + id);
 		}
 
-		function _getBySoort(soort, id) {
-			return helper.get(url + soort + '/' + id);
-		}
-
 		function _update(id, verslag) {
 			return helper.put(url + id, verslag);
 		}
@@ -78,8 +74,7 @@
 		}
 
 		function _listByType(parentId, type) {
-			var options = { params: { parentId: parentId, type: type } };
-			return helper.get(url, options);
+			return helper.get(url + type + '/' + parentId);
 		}
 
 		function _insertForType(parentId, type, verslag) {
@@ -115,7 +110,7 @@
   } catch (e) {
     module = angular.module('awelzijn.verslag', []);
   }
-  module.directive('aWelzijnVerslag', ["aWelzijnVerslagService" ,function (verslagService) {
+  module.directive('aWelzijnVerslag', ["aWelzijnVerslagService", function (verslagService) {
     return {
     		scope: {
         parentId: '=',
@@ -183,7 +178,6 @@
             ctrl.getVerslagen(ctrl.type, ctrl.parentId);
           }
         });
-
     		}
     };
   }]);
@@ -194,7 +188,7 @@
   $templateCache.put('templates/verslag.html',
     "<div class=verslagen> <div ng-show=ctrl.verslagToevoegenZichtbaar> <div class=row> <div class=\"col-lg-6 col-md-6\"> <input type=text class=form-control ng-model=ctrl.nieuwVerslag.titel placeholder=\"Titel verslag\"> </div> <div class=\"col-lg-6 col-md-6\"> <div class=\"col-lg-6 col-md-6 labelTitle\" style=\"padding-left: 30px; padding-top: 10px\">Aangemaakt op:</div> <div class=\"col-lg-6 col-md-6\"> <data-tink-datepicker data-ng-model=ctrl.nieuwVerslag.datum> </data-tink-datepicker> </div> </div> <div class=col-lg-6> <div ng-show=\"(4000 - ctrl.nieuwVerslag.beschrijving.length) <= 25\" style=\"float: right; color: green\"> nog <span style=\"font-weight: bold\">{{4000 - ctrl.nieuwVerslag.beschrijving.length}}</span> karakters </div> </div> </div> <div class=row> <div class=col-lg-12 style=\"padding-top: 10px\"> <textarea a-welzijn-verslag-editor nieuw-verslag=true ng-model=ctrl.nieuwVerslag.beschrijving rows=4 ng-trim=false maxlength=4000 class=form-control placeholder=\"Geef hier uw tekst\"></textarea> </div> </div> <div class=row> <div class=col-lg-12 style=\"padding-top: 10px; margin-bottom:15px\"> <a ng-click=ctrl.verslagOpslaan() class=\"btn btn-primary btn-large salgaBtn\"><i class=\"fa fa-save\"></i><span>Bewaren</span></a>\n" +
     "<a ng-click=ctrl.resetVerslag(); class=\"btn btn-danger salgaBtn\"><i class=\"fa fa-ban\"></i><span>Annuleren</span></a> </div> </div> </div> <div ng-show=\"ctrl.verslagen.length === 0 && !ctrl.verslagToevoegenZichtbaar\" style=padding-bottom:20px> Er zijn geen verslagen. </div> <div class=verslag style=margin-left:10px ng-mouseover=\"verslag.hover = true\" ng-mouseleave=\"verslag.hover = false\" ng-repeat=\"verslag in ctrl.verslagen | orderBy:'verslagDatum':true\"> <hr ng-hide=\"$first\"> <div class=labelTitle> <span> {{verslag.titel}} op {{verslag.datum | date:\"dd MMMM yyyy\"}} </span>\n" +
-    "<span style=\"color:gray; margin-left:5px; font-size: .9em\">door {{verslag.medewerker.voornaam + ' ' + verslag.medewerker.naam | naam}}</span>\n" +
+    "<span style=\"color:gray; margin-left:5px; font-size: .9em\">door {{verslag.medewerker.voornaam + ' ' + verslag.medewerker.naam | capitalize}}</span>\n" +
     "<span ng-show=verslag.hover class=\"float-right verslag-edit-controls\"> <a><i class=\"fa fa-pencil\" ng-click=\"editing = !editing; ctrl.editVerslag(verslag);\"></i></a>\n" +
     "<a><i class=\"fa fa-trash-o\" ng-click=ctrl.deleteVerslag(verslag);></i></a> </span> </div> <p ng-bind-html=\"verslag.beschrijving | to_trusted\" ng-show=!editing></p> <div class=row> <div class=col-lg-11> <textarea a-welzijn-verslag-editor id=verslagTextbox editing=editing ng-show=false ng-class=\"{editing: editing, multiline: verslag.beschrijving.length > 400}\" ng-model=verslag.beschrijving maxlength=4000 ng-trim=false class=\"form-control SalgaTextArea col-lg-11\" placeholder=\"Geef hier uw tekst\" ng-required></textarea> </div> <div ng-show=\"(4000 - verslag.beschrijving.length) <= 25\" style=\"font-size:.8em; color: green\"> nog <span style=\"font-weight: bold\">{{4000 - verslag.beschrijving.length}}</span> karakters </div> <div class=verslag-editing-controls ng-show=editing> <a><i class=\"fa fa-save salgaEvalBtn-edit\" ng-click=\"ctrl.updateVerslag(verslag); editing = false;\"></i></a>\n" +
     "<a><i class=\"fa fa-ban salgaEvalBtn-edit\" ng-click=\"editing = false; ctrl.cancelVerslag(verslag);\"></i></a> </div> </div> </div> <a ng-show=!ctrl.verslagToevoegenZichtbaar class=\"btn btn-toevoegen btn-large salgaBtn\" ng-click=\"ctrl.verslagToevoegenZichtbaar = true;\"> <i class=\"fa fa-plus\"></i>\n" +
