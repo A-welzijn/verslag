@@ -1,6 +1,6 @@
 # A-Welzijn Verslag
 
-v1.0.7
+v1.1.0
 
 ### Hoe het eruit ziet
 
