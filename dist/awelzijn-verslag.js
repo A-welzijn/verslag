@@ -78,7 +78,8 @@
 		}
 
 		function _listByType(parentId, type) {
-			return helper.get(url + type + '/' + parentId);
+			var options = { params: { parentId: parentId, type: type } };
+			return helper.get(url, options);
 		}
 
 		function _insertForType(parentId, type, verslag) {
