@@ -1,6 +1,6 @@
 {
   "name": "awelzijn-verslag",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": [
     "dist/awelzijn-verslag.js"
   ],
@@ -18,7 +18,8 @@
     "font-awesome": "4.3.0",
     "tink-core": "latest",
     "awelzijn-helper-http":"latest",
-    "awelzijn-filters": "latest"
+    "awelzijn-filters": "latest",
+    "awelzijn-notification-service": "latest"
   },
   "devDependencies": {}
 }
