@@ -15,6 +15,10 @@
 		function _update(id, verslag) {
 			return helper.put(url + id, verslag);
 		}
+		
+		function _getBySoort(soort, id) {
+			return helper.get(url + soort + '/' + id);
+		}
 
 		function _delete(id, type) {
 			return helper.delete(url + id +'/' + type);
@@ -40,6 +44,7 @@
 
 		return {
 			get: _get,
+			getBySoort: _getBySoort,
 			update: _update,
 			delete: _delete,
 			listByType: _listByType,
