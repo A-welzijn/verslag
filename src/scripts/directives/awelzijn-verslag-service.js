@@ -17,7 +17,7 @@
 		}
 		
 		function _getBySoort(soort, id) {
-			return helper.get(url + soort + '/' + id);
+			return helper.get(url + "soort/"+ soort + '/' + id);
 		}
 
 		function _delete(id, type) {
