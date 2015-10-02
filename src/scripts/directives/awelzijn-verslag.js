@@ -40,6 +40,7 @@
         ctrl.resetVerslag = function (id) {
           ctrl.verslagToevoegenZichtbaar = false;
           ctrl.nieuwVerslag.beschrijving = "";
+          ctrl.nieuwVerslag.titel = "";
           ctrl.nieuwVerslag.verslagDatum = new Date();
         };
 
