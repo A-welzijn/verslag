@@ -29,7 +29,6 @@
 
         ctrl.verslagOpslaan = function () {
           ctrl.nieuwVerslag.datum.setHours(0, 0, 0, 0);
-          ctrl.nieuwVerslag.medewerkerId = 20;
           verslagService.insertForType(ctrl.parentId, ctrl.type, { verslag: ctrl.nieuwVerslag }).then(function (response) {
             ctrl.verslagen.push(response.verslag);
             ctrl.resetVerslag();
@@ -45,7 +44,6 @@
         };
 
         ctrl.updateVerslag = function (verslag) {
-          verslag.medewerkerId = verslag.medewerker.id;
           verslagService.update(verslag.id, { "verslag": verslag });
           notificationService.notify("Verslag werd succevol aangepast");
         };
