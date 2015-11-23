@@ -30,8 +30,8 @@
 		</div>
 		<div class="row">
 			<div class="col-lg-12" style="padding-top: 10px; margin-bottom:15px;">
-				<a ng-click="ctrl.verslagOpslaan()" class="btn btn-primary btn-sm salgaBtn"><i class="fa fa-save"></i><span>Bewaren</span></a>
-				<a ng-click="ctrl.resetVerslag();" class="btn btn-default btn-sm salgaBtn"><i class="fa fa-ban"></i><span>Annuleren</span></a>
+				<a ng-click="ctrl.verslagOpslaan()" class="btn btn-primary btn-sm"><span>Bewaren</span></a>
+				<a ng-click="ctrl.resetVerslag();" class="btn btn-default btn-sm"><span>Annuleren</span></a>
 			</div>
 		</div>
 	</div>
@@ -74,8 +74,7 @@
 			</div>
 		</div>
 	</div>
-	<a ng-show="!ctrl.verslagToevoegenZichtbaar" class="btn btn-toevoegen btn-large salgaBtn" ng-click="ctrl.verslagToevoegenZichtbaar = true;">
-		<i class="fa fa-plus"></i>
+	<a ng-show="!ctrl.verslagToevoegenZichtbaar" class="btn btn-toevoegen btn-large" ng-click="ctrl.verslagToevoegenZichtbaar = true;">
 		<span>Verslag toevoegen</span>
 	</a>
 </div>
